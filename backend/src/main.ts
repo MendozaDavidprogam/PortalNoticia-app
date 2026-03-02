@@ -4,22 +4,22 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
-import * as express from 'express';
-import { join } from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: ['http://localhost:5173', 'http://localhost:3001'],
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:3001',
+      'https://portal-n.netlify.app',
+    ],
     credentials: true,
   });
 
-  //app.use('/uploads', express.static(join(process.cwd(), 'uploads')));
-  
   app.setGlobalPrefix('api/v1');
 
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true, forbidNonWhitelisted: true, }));
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true, forbidNonWhitelisted: true }));
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalInterceptors(new TransformInterceptor());
 

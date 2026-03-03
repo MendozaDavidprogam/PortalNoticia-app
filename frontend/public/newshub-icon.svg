@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F0F0F"/>
+      <stop offset="100%" style="stop-color:#1A1A1A"/>
+    </linearGradient>
+    <linearGradient id="nGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8E8E8"/>
+      <stop offset="100%" style="stop-color:#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF4D4D"/>
+      <stop offset="100%" style="stop-color:#FF1A1A"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="512" height="512" rx="110" ry="110" fill="url(#bg)"/>
+
+  <!-- Subtle grid texture -->
+  <line x1="0" y1="170" x2="512" y2="170" stroke="#ffffff08" stroke-width="1"/>
+  <line x1="0" y1="340" x2="512" y2="340" stroke="#ffffff08" stroke-width="1"/>
+  <line x1="170" y1="0" x2="170" y2="512" stroke="#ffffff08" stroke-width="1"/>
+  <line x1="340" y1="0" x2="340" y2="512" stroke="#ffffff08" stroke-width="1"/>
+
+  <!-- N letter - left vertical bar -->
+  <rect x="128" y="130" width="58" height="252" rx="8" fill="url(#nGrad)"/>
+
+  <!-- N letter - diagonal stroke -->
+  <polygon points="128,130 186,130 384,354 384,382 326,382 128,158" fill="url(#nGrad)"/>
+
+  <!-- N letter - right vertical bar -->
+  <rect x="326" y="130" width="58" height="252" rx="8" fill="url(#nGrad)"/>
+
+  <!-- Red accent dot - top right corner of N -->
+  <circle cx="384" cy="130" r="28" fill="url(#accentGrad)" filter="url(#glow)"/>
+
+</svg>

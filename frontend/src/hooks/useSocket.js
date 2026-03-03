@@ -3,6 +3,9 @@ import { io } from 'socket.io-client'
 import { useNotificationsStore } from '../store/notifications.store'
 import toast from 'react-hot-toast'
 
+const SOCKET_URL = import.meta.env.VITE_API_URL
+  ? import.meta.env.VITE_API_URL.replace('/api/v1', '')
+  : 'http://localhost:3001'
 
 let socket = null
 let bound = false
@@ -18,7 +21,7 @@ export function useSocket(userId) {
     if (socket && !socket.connected) { socket.close(); socket = null; bound = false }
     if (socket?.connected) return
 
-    socket = io('http://localhost:3001', {
+    socket = io(SOCKET_URL, {
       auth: { token },
       transports: ['websocket'],
       reconnection: true,

@@ -105,7 +105,7 @@ export default function NewsFormPage() {
           <p style={{ fontSize: 16, lineHeight: 1.75, whiteSpace: 'pre-wrap', color: 'var(--text-primary)' }}>{form.content || 'Sin contenido'}</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: 20, alignItems: 'start' }}>
+        <form onSubmit={handleSubmit} className="news-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: 20, alignItems: 'start' }}>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <Input label="Título" placeholder="Un título llamativo…" value={form.title}

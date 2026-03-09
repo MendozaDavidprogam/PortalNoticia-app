@@ -14,7 +14,6 @@ export default function Layout() {
 
   const userId = user?._id?.toString()
 
-
   useSocket(userId)
 
   useEffect(() => {
@@ -24,28 +23,42 @@ export default function Layout() {
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
 
-      <div style={{
-        width: 'var(--sidebar-w)', flexShrink: 0,
-        display: menuOpen ? 'block' : undefined,
-      }}>
+      <div className={`sidebar-wrapper ${menuOpen ? 'open' : ''}`}>
         <Sidebar onClose={() => setMenuOpen(false)} />
       </div>
-
 
       {menuOpen && (
         <div
           onClick={() => setMenuOpen(false)}
-          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.4)', zIndex: 50 }}
+          style={{
+            position: 'fixed', inset: 0,
+            background: 'rgba(0,0,0,.45)',
+            zIndex: 150,
+          }}
         />
       )}
 
-
-      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', marginLeft: 'var(--sidebar-w)' }}>
-        <Topbar search={search} setSearch={setSearch} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <main style={{ flex: 1, padding: '28px 32px', maxWidth: 1100, width: '100%', margin: '0 auto' }}>
+      <div className="main-wrapper">
+        <Topbar
+          search={search}
+          setSearch={setSearch}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+        />
+        <main
+          className="main-content"
+          style={{
+            flex: 1,
+            padding: '28px 32px',
+            maxWidth: 1100,
+            width: '100%',
+            margin: '0 auto',
+          }}
+        >
           <Outlet context={{ search }} />
         </main>
       </div>
+
     </div>
   )
 }

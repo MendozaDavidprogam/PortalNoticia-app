@@ -13,7 +13,8 @@ async function bootstrap() {
       'http://localhost:5173',
       'http://localhost:3001',
       'https://portal-n.netlify.app',
-      'https://portal-noticia-app.vercel.app'
+      'https://portal-noticia-app.vercel.app',
+      /https:\/\/portal-noticia-.*\.vercel\.app$/,
     ],
     credentials: true,
   });
